@@ -9,7 +9,7 @@ const demo: Array<IMenubar> = Object.keys(modules).map((path: string) => modules
 
 
 // console.log(demo);
-export const allowRouter: Array<IMenubar> = [
+export const allowRouter: ({ redirect: string; path: string; component: any; children: ({ path: string; component: () => any; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { icon: string; title: string }; name: string })[]; meta: { icon: string; title: string }; name: string } | IMenubar | { path: string; component: any; children: { path: string; component: () => any; meta: { icon: string; title: string }; name: string }[]; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { show: boolean; title: string }; name: string } | { path: string; component: any; children: { path: string; component: () => any; meta: { icon: string; title: string }; name: string }[]; meta: { icon: string; title: string }; name: string } | { path: string; component: any; children: ({ path: string; component: () => any; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { icon: string; title: string }; name: string })[]; meta: { icon: string; title: string }; name: string } | { path: string; component: any; children: ({ path: string; component: () => any; meta: { icon: string; title: string }; name: string } | { path: string; component: () => any; meta: { icon: string; title: string }; name: string })[]; meta: { icon: string; title: string }; name: string })[] = [
     {
         name: '',
         path: '/',
@@ -23,15 +23,6 @@ export const allowRouter: Array<IMenubar> = [
             {
                 path: '/home',
                 name: 'home',
-                component: () => import('@/views/test_case/index.vue'),
-                meta: {
-                    title: '首页',
-                    icon: 'HomeFilled'
-                }
-            },
-            {
-                path: '/itema',
-                name: 'itema',
                 component: () => import('@/views/home/itema.vue'),
                 meta: {
                     title: '首页',
@@ -85,8 +76,28 @@ export const allowRouter: Array<IMenubar> = [
         component: () => import('@/views/login/index.vue'),
         meta: {
             title: 'login',
-            icon: ''
+            show: true
         }
+    },
+    {
+        path: '/unify_route',
+        name: '统一路由',
+        component: LayOut,
+        meta: {
+            title: '统一路由',
+            icon: 'Operation'
+        },
+        children:[
+            {
+                path: '/route_view',
+                name: '路由展示',
+                component: () => import('@/views/unify_route/route_view.vue'),
+                meta: {
+                    title: '路由规则展示',
+                    icon: 'Avatar'
+                }
+            }
+        ]
     },
     {
         path: '/jinscene',
