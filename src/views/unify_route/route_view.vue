@@ -4,26 +4,34 @@
             路由规则展示 
         </div>
         <!-- 搜索部分 -->
-        <div class='searchform'>
-            <el-form>
-                <el-row>
-                    <el-col :span='8'>
-                        <el-form-item>
-                            <el-input
-                                placeholder='请输入内容'
-                                size='mini'
-                                clearable
-                                style='width:200px'
-                            />
-                            <el-button
-                                size='mini'
-                                :icon='Search'
-                                type='primary'
-                            >搜索</el-button>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-            </el-form>
+        <div
+            class='searchform'
+        >
+            <el-form-item>
+                <el-input
+                    placeholder='路由名称'
+                    size='mini'
+                    clearable
+                    style='width:200px'
+                />
+                <el-input
+                    placeholder='优先级'
+                    size='mini'
+                    clearable
+                    style='width:200px'
+                />
+                <el-input
+                    placeholder='路由状态'
+                    size='mini'
+                    clearable
+                    style='width:200px'
+                />
+                <el-button
+                    size='mini'
+                    :icon='Search'
+                    type='primary'
+                >搜索</el-button> 
+            </el-form-item>
         </div>
 
         <div class='layui-ellem-quote'>
