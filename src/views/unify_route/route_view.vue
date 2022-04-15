@@ -27,7 +27,7 @@
         </div>
 
         <div class='layui-ellem-quote'>
-            <span>测试案例列表</span>
+            <span>路由列表</span>
             <el-row style='float:right'>
                 <el-button
                     size='mini'
@@ -38,23 +38,16 @@
                 >新增</el-button>
                 <el-button
                     size='mini'
-                    icon='Plus'
-                    type='primary'
-                    plain
-                >执行案例绑定</el-button>
-                <el-button
-                    size='mini'
-                    icon='Plus'
-                    type='primary'
-                    plain
-                >查看关联执行案例</el-button>
-
-                <el-button
-                    size='mini'
                     icon='CloseBold'
                     type='danger'
                     plain
                 >批量删除</el-button>
+                <el-button
+                    size='mini'
+                    icon='Plus'
+                    type='primary'
+                    plain
+                >流程化展示</el-button>
             </el-row>
         </div>
 
@@ -74,82 +67,66 @@
                 <el-table-column
                     fixed
                     prop='id'
-                    label='编号'
-                    width='150'
+                    label='路由编号'
+                    align='center'
                 />
                 <el-table-column
-                    prop='caseDesc'
-                    label='案例描述'
-                    width='200'
+                    prop='routeName'
+                    label='路由名称'
+                    align='center'
                 />
                 <el-table-column
-                    prop='inputSeq'
-                    label='输入序列'
-                    width='150'
+                    prop='priority'
+                    label='优先级'
+                    align='center'
                 />
                 <el-table-column
-                    prop='expResultRule'
-                    label='预期结果规则校验'
-                    width='150'
+                    prop='routeRule'
+                    label='路由规则'
+                    align='center'
                 />
                 <el-table-column
-                    prop='used'
-                    label='是否弃用'
-                    width='150'
+                    prop='skillcode'
+                    label='skillcode'
+                    align='center'
                 />
                 <el-table-column
-                    prop='reqId'
-                    label='关联的需求编号'
-                    width='150'
+                    prop='routeState'
+                    label='路由状态'
+                    align='center'
                 />
                 <el-table-column
-                    prop='tester'
-                    label='测试负责人'
-                    width='150'
+                    prop='createTime'
+                    label='创建时间'
+                    align='center'
                 />
                 <el-table-column
-                    prop='developer'
-                    label='开发负责人'
-                    width='150'
-                />
-                <el-table-column
-                    prop='frontCaseId'
-                    label='前置测试案例编号'
-                    width='150'
-                />
-                <el-table-column
-                    prop='executeNum'
-                    label='执行次数'
-                    width='150'
-                />
-                <el-table-column
-                    prop='lastExecuteTime'
-                    label='最后执行时间'
-                    width='150'
-                />
-                <el-table-column
-                    prop='editState'
-                    label='编辑状态'
-                    width='150'
+                    prop='updateTime'
+                    label='最后更新时间'
+                    align='center'
                 />
                 <el-table-column
                     fixed='right'
                     label='操作'
-                    width='260'
+                    width='250px'
+                    align='center'
                 >
                     <template #default>
                         <el-button
                             type='primary'
                             size='small'
-                        >预期结果规则</el-button>
+                        >在下方插入
+                        </el-button>
                         <el-button
                             type='primary'
                             size='small'
-                        >编辑</el-button>
+                        >修改
+                        </el-button>
                         <el-button
-                            type='danger'
+                            type='primary'
                             size='small'
-                        >删除</el-button>
+                        >删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -167,7 +144,7 @@ import axios from 'axios';
 // 数据表格
 const tableData:any = reactive([]);
 // 查询
-axios.get('/api/test_case_page').then(res => {
+axios.get('/route/findAllRouteRule').then(res => {
     if(res.data.list.length > 0) {
         let i:number;
         for(i = 0; i < res.data.list.length; i++) {
@@ -175,12 +152,7 @@ axios.get('/api/test_case_page').then(res => {
         }
     }
 });
-// 新增
-const addData = () => {
-
-};
 </script>
-
 
 
 <style scoped lang='scss'>
