@@ -188,15 +188,6 @@
                         v-model='insertData.skillcode'
                     />
                 </el-form-item>
-                <el-form-item
-                    label='路由状态'
-                    :label-width='formLabelWidth'
-                >
-                    <el-input
-                        v-model='insertData.status'
-                        readonly
-                    />
-                </el-form-item>
             </el-form>
             <template #footer>
                 <span class='dialog-footer'>
@@ -215,6 +206,7 @@
 <script setup lang='ts'>
 import { reactive,ref } from 'vue';
 import axios from 'axios';
+const formLabelWidth = '100px';
 
 let insertFlag = ref(false);
 
@@ -222,8 +214,7 @@ const insertData = reactive({
     name: '',
     priority: '',
     relation: '',
-    skillcode: '',
-    status: '启用'
+    skillcode: ''
 });
 
 // 数据表格
