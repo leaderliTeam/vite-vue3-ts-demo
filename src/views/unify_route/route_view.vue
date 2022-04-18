@@ -42,7 +42,7 @@
                     icon='Plus'
                     type='primary'
                     plain
-                    @click='$router.push(&apos;/test_case/add&apos;)'
+                    @click='insertFlag = true'
                 >新增</el-button>
                 <el-button
                     size='mini'
@@ -140,14 +140,91 @@
             </el-table>
         </div>
 
+        <!-- 新增 -->
+        <el-dialog
+            v-model='insertFlag'
+            title='新增路由规则'
+        >
+            <el-form :model='insertData'>
+                <el-form-item
+                    label='路由名称'
+                    :label-width='formLabelWidth'
+                >
+                    <el-input
+                        v-model='insertData.name'
+                        autocomplete='on'
+                    />
+                </el-form-item>
+
+                <el-form-item
+                    label='优先级'
+                    :label-width='formLabelWidth'
+                >
+                    <el-input
+                        v-model='insertData.priority'
+                    />
+                </el-form-item>
+                <el-form-item
+                    label='路由关系'
+                    :label-width='formLabelWidth'
+                >
+                    <el-select
+                        v-model='insertData.relation'
+                        placeholder='请选择一条路由关系'
+                    >
+                        <el-option
+                            value='夜间技能'
+                        />
+                        <el-option
+                            value='夜间白金'
+                        />
+                    </el-select>
+                </el-form-item>
+                <el-form-item
+                    label='skillcode'
+                    :label-width='formLabelWidth'
+                >
+                    <el-input
+                        v-model='insertData.skillcode'
+                    />
+                </el-form-item>
+                <el-form-item
+                    label='路由状态'
+                    :label-width='formLabelWidth'
+                >
+                    <el-input
+                        v-model='insertData.status'
+                        readonly
+                    />
+                </el-form-item>
+            </el-form>
+            <template #footer>
+                <span class='dialog-footer'>
+                    <el-button @click='insertFlag = false'>Cancel</el-button>
+                    <el-button
+                        type='primary'
+                        @click='insertFlag = false'
+                    >Confirm</el-button>
+                </span>
+            </template>
+        </el-dialog>
     </div>
 </template>
 
 
 <script setup lang='ts'>
-import { reactive } from 'vue';
+import { reactive,ref } from 'vue';
 import axios from 'axios';
 
+let insertFlag = ref(false);
+
+const insertData = reactive({
+    name: '',
+    priority: '',
+    relation: '',
+    skillcode: '',
+    status: '启用'
+});
 
 // 数据表格
 const tableData:any = reactive([]);
